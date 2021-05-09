@@ -136,21 +136,37 @@
                                     <constraint firstAttribute="height" constant="60" id="5b0-d1-fhV"/>
                                 </constraints>
                             </stackView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="zlk-pg-BBV">
+                                <rect key="frame" x="20" y="148" width="374" height="50"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="5Lz-eV-pRP"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="5" minimumInteritemSpacing="5" id="iDa-C1-dAu">
+                                    <size key="itemSize" width="30" height="30"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" separatorInsetReference="fromAutomaticInsets" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="KWz-gw-d6M">
-                                <rect key="frame" x="20" y="148" width="374" height="714"/>
+                                <rect key="frame" x="20" y="203" width="374" height="659"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <inset key="separatorInset" minX="20" minY="0.0" maxX="20" maxY="0.0"/>
                             </tableView>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="FoK-oY-TfO"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="jNc-jG-DZC" secondAttribute="trailing" constant="20" id="7z9-g2-INb"/>
+                            <constraint firstItem="zlk-pg-BBV" firstAttribute="leading" secondItem="r5q-be-Be8" secondAttribute="leadingMargin" id="G3D-J6-YbS"/>
                             <constraint firstItem="KWz-gw-d6M" firstAttribute="leading" secondItem="r5q-be-Be8" secondAttribute="leadingMargin" id="GDJ-WU-ham"/>
+                            <constraint firstItem="zlk-pg-BBV" firstAttribute="top" secondItem="jNc-jG-DZC" secondAttribute="bottom" id="Jhh-fb-5Kj"/>
                             <constraint firstAttribute="trailingMargin" secondItem="KWz-gw-d6M" secondAttribute="trailing" id="JrW-LX-afq"/>
+                            <constraint firstItem="KWz-gw-d6M" firstAttribute="top" secondItem="zlk-pg-BBV" secondAttribute="bottom" constant="5" id="Jsn-fa-IAd"/>
+                            <constraint firstItem="zlk-pg-BBV" firstAttribute="trailing" secondItem="r5q-be-Be8" secondAttribute="trailingMargin" id="LHb-RI-Mmh"/>
                             <constraint firstAttribute="bottomMargin" secondItem="KWz-gw-d6M" secondAttribute="bottom" id="Sx4-Mx-eaB"/>
                             <constraint firstItem="jNc-jG-DZC" firstAttribute="top" secondItem="r5q-be-Be8" secondAttribute="topMargin" id="czQ-Ha-jMt"/>
-                            <constraint firstItem="KWz-gw-d6M" firstAttribute="top" secondItem="jNc-jG-DZC" secondAttribute="bottom" id="lqM-bV-KzD"/>
                             <constraint firstItem="jNc-jG-DZC" firstAttribute="leading" secondItem="r5q-be-Be8" secondAttribute="leading" constant="20" id="nzW-Nz-39y"/>
                         </constraints>
                     </view>
@@ -160,6 +176,7 @@
                         <outlet property="byAlphabet" destination="pE2-FM-kgg" id="QEV-SM-UZt"/>
                         <outlet property="byAppearances" destination="KVu-bB-Kux" id="SDo-CY-gD3"/>
                         <outlet property="byPosition" destination="qUd-Bf-XyE" id="4cI-RB-W5H"/>
+                        <outlet property="collectionView" destination="zlk-pg-BBV" id="k8V-vk-Wi7"/>
                         <outlet property="sortedLbl" destination="JO1-mA-Gwm" id="TLI-TJ-lVr"/>
                         <outlet property="stackView" destination="jNc-jG-DZC" id="FBa-YW-VSe"/>
                         <outlet property="tableView" destination="KWz-gw-d6M" id="09f-fl-rBw"/>

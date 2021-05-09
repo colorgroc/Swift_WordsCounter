@@ -10,6 +10,7 @@ import Foundation
 class ViewModel {
   
   //MARK: Variables
+  var wordsCounter = 0
   var sortedBy = SortedType.byPosition
   
   private var wordsInitialAuxiliarDictionary = Dictionary<String, Int>()
@@ -19,6 +20,7 @@ class ViewModel {
   
   //MARK: Initial Functions
   private func getWords(text: String?) -> Dictionary<String, Int>{
+    wordsCounter = 0
     var wordsDictionary = Dictionary<String, Int>()
     
     guard let text = text else { return wordsDictionary }
