@@ -12,7 +12,10 @@ class ViewModel {
   //MARK: Variables
   var sortedBy = SortedType.byPosition
   
+  private var wordsInitialAuxiliarDictionary = Dictionary<String, Int>()
   private var wordsInitialList = [WordsList]()
+  
+  var collectionViewCellSelected = 0
   
   //MARK: Initial Functions
   private func getWords(text: String?) -> Dictionary<String, Int>{
@@ -22,6 +25,7 @@ class ViewModel {
     
     let wordsArray = text.components(separatedBy: CharacterSet.whitespacesAndNewlines.union(NSCharacterSet(charactersIn: ".,:;-`_?!¡¿()\"][*$") as CharacterSet).union(CharacterSet.decimalDigits))
     
+    var idCounter = 0
     for word in wordsArray{
       var capitalizedWord = word.capitalized
       if capitalizedWord.first == "'"{
@@ -34,6 +38,8 @@ class ViewModel {
         if capitalizedWord != "" && capitalizedWord != "'" && capitalizedWord != "\u{1a}" && capitalizedWord != "\u{1a}\u{1a}"{
 
           wordsDictionary[capitalizedWord] = 1
+          wordsInitialAuxiliarDictionary[capitalizedWord] = idCounter
+          idCounter += 1
         }
       }
     }
@@ -43,10 +49,24 @@ class ViewModel {
   private func getInitialWordsList(text: String?) -> [WordsList]{
     var wordsList = [WordsList]()
     for word in getWords(text: text){
-      wordsList.append(WordsList(word: word.key, count: word.value))
-      
+      if let position = wordsInitialAuxiliarDictionary[word.key]{
+        wordsList.append(WordsList(word: word.key, count: word.value, position: position))
+      }
     }
     return wordsList
+  }
+
+  //MARK: Sort Functions
+  func getWordsSortedByPosition() -> [WordsList]{
+    return wordsInitialList.sorted(by: { (lhs, rhs) in return lhs.position < rhs.position })
+  }
+  
+  func getWordsSortedByAlphabet() -> [WordsList]{
+    return wordsInitialList.sorted(by: { (lhs, rhs) in return lhs.word.lowercased() < rhs.word.lowercased() })
+  }
+  
+  func getWordsSortedByAppearances() -> [WordsList]{
+    return wordsInitialList.sorted(by: { (lhs, rhs) in return lhs.count > rhs.count })
   }
   
   //MARK: Load Text Function

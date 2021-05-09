@@ -45,6 +45,18 @@ class SortedViewController: UIViewController {
     configureUI()
     setDelegates()
     registerXib()
+    
+    switch model?.sortedBy {
+    case .byPosition, .none:
+      wordsList = model?.getWordsSortedByPosition() ?? [WordsList]()
+      byPosition.selectButton(stackview: self.stackView, initialFontSize: 15)
+    case .byAlphabet:
+      wordsList = model?.getWordsSortedByAlphabet() ?? [WordsList]()
+      byAlphabet.selectButton(stackview: self.stackView, initialFontSize: 15)
+    case .byAppearances:
+      wordsList = model?.getWordsSortedByAppearances() ?? [WordsList]()
+      byAppearances.selectButton(stackview: self.stackView, initialFontSize: 15)
+    }
   }
   
   private func setDelegates(){
@@ -87,6 +99,7 @@ class SortedViewController: UIViewController {
     if let model = model{
       byPosition.selectButton(stackview: self.stackView, initialFontSize: 15)
       model.sortedBy = .byPosition
+      wordsList = model.getWordsSortedByPosition()
     }
   }
   
@@ -94,6 +107,7 @@ class SortedViewController: UIViewController {
     if let model = model{
       byAlphabet.selectButton(stackview: self.stackView, initialFontSize: 15)
       model.sortedBy = .byAlphabet
+      wordsList = model.getWordsSortedByAlphabet()
     }
   }
   
@@ -101,6 +115,7 @@ class SortedViewController: UIViewController {
     if let model = model{
       byAppearances.selectButton(stackview: self.stackView, initialFontSize: 15)
       model.sortedBy = .byAppearances
+      wordsList = model.getWordsSortedByAppearances()
     }
   }
 }
