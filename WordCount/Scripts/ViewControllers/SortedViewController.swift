@@ -16,8 +16,20 @@ class SortedViewController: UIViewController {
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var stackView: UIStackView!
   
+  let wordCell = "WordCell"
+  
+  var wordsList = [WordsList](){
+    didSet{
+      if let model = model{
+        tableView.reloadData()
+      }
+    }
+  }
+  
   var searchController = UISearchController(searchResultsController: nil)
   var navTitle: String?
+  
+  var model: ViewModel?
   
   var isSearchBarEmpty: Bool {
     return searchController.searchBar.text?.isEmpty ?? true
@@ -32,6 +44,7 @@ class SortedViewController: UIViewController {
     super.viewDidLoad()
     configureUI()
     setDelegates()
+    registerXib()
   }
   
   private func setDelegates(){
@@ -45,6 +58,12 @@ class SortedViewController: UIViewController {
     self.navigationItem.backBarButtonItem?.action = #selector(goBack)
     
     self.tableView.tableFooterView = UIView(frame: .zero)
+    
+  }
+  
+  private func registerXib(){
+    let nibCell = UINib(nibName: wordCell, bundle: Bundle.main)
+    tableView.register(nibCell, forCellReuseIdentifier: wordCell)
   }
   
   private func setButtons(){
@@ -52,9 +71,9 @@ class SortedViewController: UIViewController {
     sortedLbl.text = "sorted by:"
     sortedLbl.font =  UIFont(name: "Helvetica", size: 10)
     
-    byPosition.setButton(name: "Posicion", size: 15)
-    byAlphabet.setButton(name: "Aphabetically", size: 15)
-    byAppearances.setButton(name: "Appearances", size: 15)
+    byPosition.setButton(name: SortedType.byPosition.name, size: 15)
+    byAlphabet.setButton(name: SortedType.byAlphabet.name, size: 15)
+    byAppearances.setButton(name: SortedType.byAppearances.name, size: 15)
     
   }
   
@@ -65,15 +84,24 @@ class SortedViewController: UIViewController {
   }
   
   @IBAction func sortByPosition(_ sender: Any) {
-    print("Position")
+    if let model = model{
+      byPosition.selectButton(stackview: self.stackView, initialFontSize: 15)
+      model.sortedBy = .byPosition
+    }
   }
   
   @IBAction func sortByAlphabet(_ sender: Any) {
-    print("Alphabet")
+    if let model = model{
+      byAlphabet.selectButton(stackview: self.stackView, initialFontSize: 15)
+      model.sortedBy = .byAlphabet
+    }
   }
   
   @IBAction func sortByAppearances(_ sender: Any) {
-    print("Appeared")
+    if let model = model{
+      byAppearances.selectButton(stackview: self.stackView, initialFontSize: 15)
+      model.sortedBy = .byAppearances
+    }
   }
 }
 
@@ -81,7 +109,7 @@ class SortedViewController: UIViewController {
 extension SortedViewController: UITableViewDelegate, UITableViewDataSource{
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 0
+    return wordsList.count
   }
   
   func numberOfSections(in tableView: UITableView) -> Int {
@@ -89,6 +117,11 @@ extension SortedViewController: UITableViewDelegate, UITableViewDataSource{
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    if let cell = tableView.dequeueReusableCell(withIdentifier: wordCell, for: indexPath) as? WordCell{
+      
+      cell.setCell(word: wordsList[indexPath.row].word , counter: wordsList[indexPath.row].count)
+      return cell
+    }
     return UITableViewCell()
   }
 

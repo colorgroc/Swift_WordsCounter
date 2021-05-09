@@ -18,6 +18,9 @@
 		2E55FF7C26457E090092BCD3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2E55FF7A26457E090092BCD3 /* Main.storyboard */; };
 		2E55FF7E26457E0C0092BCD3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E55FF7D26457E0C0092BCD3 /* Assets.xcassets */; };
 		2E55FF8126457E0C0092BCD3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2E55FF7F26457E0C0092BCD3 /* LaunchScreen.storyboard */; };
+		2EE197C126484F6D000F91FB /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE197C026484F6D000F91FB /* ViewModel.swift */; };
+		2EE197C52648543D000F91FB /* WordCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EE197C42648543D000F91FB /* WordCell.xib */; };
+		2EE197C926485448000F91FB /* WordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE197C826485448000F91FB /* WordCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +37,9 @@
 		2E55FF7D26457E0C0092BCD3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2E55FF8026457E0C0092BCD3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2E55FF8226457E0C0092BCD3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2EE197C026484F6D000F91FB /* ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		2EE197C42648543D000F91FB /* WordCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WordCell.xib; sourceTree = "<group>"; };
+		2EE197C826485448000F91FB /* WordCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +64,7 @@
 		2E486C642645A17F00B6E04B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				2EE197C32648543D000F91FB /* Views and Cells */,
 				2E486C7026467E5500B6E04B /* Storyboards */,
 				2E486C6D26467E2200B6E04B /* TextFiles */,
 				2E55FF7D26457E0C0092BCD3 /* Assets.xcassets */,
@@ -68,6 +75,7 @@
 		2E486C6C26467DB300B6E04B /* Scripts */ = {
 			isa = PBXGroup;
 			children = (
+				2EE197C726485448000F91FB /* Views and Cells */,
 				2E28AB6C2647CDCD00235BDE /* Extras */,
 				2E486C852646F56B00B6E04B /* ViewModel */,
 				2E486C842646F55F00B6E04B /* ViewControllers */,
@@ -116,6 +124,7 @@
 		2E486C852646F56B00B6E04B /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				2EE197C026484F6D000F91FB /* ViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -144,6 +153,22 @@
 				2E55FF8226457E0C0092BCD3 /* Info.plist */,
 			);
 			path = WordCount;
+			sourceTree = "<group>";
+		};
+		2EE197C32648543D000F91FB /* Views and Cells */ = {
+			isa = PBXGroup;
+			children = (
+				2EE197C42648543D000F91FB /* WordCell.xib */,
+			);
+			path = "Views and Cells";
+			sourceTree = "<group>";
+		};
+		2EE197C726485448000F91FB /* Views and Cells */ = {
+			isa = PBXGroup;
+			children = (
+				2EE197C826485448000F91FB /* WordCell.swift */,
+			);
+			path = "Views and Cells";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -208,6 +233,7 @@
 				2E55FF7E26457E0C0092BCD3 /* Assets.xcassets in Resources */,
 				2E486C682645A1CF00B6E04B /* Alice.txt in Resources */,
 				2E55FF7C26457E090092BCD3 /* Main.storyboard in Resources */,
+				2EE197C52648543D000F91FB /* WordCell.xib in Resources */,
 				2E486C692645A1CF00B6E04B /* Paradise.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -221,8 +247,10 @@
 			files = (
 				2E55FF7926457E090092BCD3 /* MainMenuViewController.swift in Sources */,
 				2E28AB6E2647CE1500235BDE /* ExtraInfo.swift in Sources */,
+				2EE197C926485448000F91FB /* WordCell.swift in Sources */,
 				2E55FF7526457E090092BCD3 /* AppDelegate.swift in Sources */,
 				2E55FF7726457E090092BCD3 /* SceneDelegate.swift in Sources */,
+				2EE197C126484F6D000F91FB /* ViewModel.swift in Sources */,
 				2E486C7C2646A7AA00B6E04B /* SortedViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

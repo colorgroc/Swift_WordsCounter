@@ -14,7 +14,8 @@ class MainMenuViewController: UIViewController {
   @IBOutlet weak var buttonLoadText1: UIButton!
   @IBOutlet weak var buttonLoadText2: UIButton!
   @IBOutlet weak var buttonLoadText3: UIButton!
-
+  
+  private let model = ViewModel()
   
 
   override func viewDidLoad() {
@@ -29,9 +30,9 @@ class MainMenuViewController: UIViewController {
     mainTitleLbl.textColor = ExtraInfo.mainColor
     mainTitleLbl.text = "Word Counter"
     
-    buttonLoadText1.setButton(name: "Primer Boton", border: true)
-    buttonLoadText2.setButton(name: "Segundo Boton", border: true)
-    buttonLoadText3.setButton(name: "Tercer Boton", border: true)
+    buttonLoadText1.setButton(name: ButtonsID.namesFile.buttonName, border: true)
+    buttonLoadText2.setButton(name: ButtonsID.aliceFile.buttonName, border: true)
+    buttonLoadText3.setButton(name: ButtonsID.paradiseFile.buttonName, border: true)
   }
   
   
@@ -42,21 +43,25 @@ class MainMenuViewController: UIViewController {
       return
     }
     vC.navigationItem.title = title
+    vC.model = model
     self.navigationController?.pushViewController(vC, animated: true)
   }
   
   
   // MARK: IBOutlets Actions
   @IBAction func onClickButton1(_ sender: Any) {
-    goToNextScreen(title: "Primer boton")
+    model.loadText(fileName: ButtonsID.namesFile.fileName)
+    goToNextScreen(title: ButtonsID.namesFile.buttonName)
   }
   
   @IBAction func onClickButton2(_ sender: Any) {
-    goToNextScreen(title: "Segundo boton")
+    model.loadText(fileName: ButtonsID.aliceFile.fileName)
+    goToNextScreen(title: ButtonsID.aliceFile.buttonName)
   }
   
   @IBAction func onClickButton3(_ sender: Any) {
-    goToNextScreen(title: "Tercer boton")
+    model.loadText(fileName: ButtonsID.paradiseFile.fileName)
+    goToNextScreen(title: ButtonsID.paradiseFile.buttonName)
   }
   
 }
@@ -71,6 +76,37 @@ extension MainMenuViewController{
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     self.navigationController?.setNavigationBarHidden(true, animated: animated)
+  }
+}
+
+// MARK: ButtonsID Enum
+extension MainMenuViewController{
+  enum ButtonsID{
+    case namesFile
+    case aliceFile
+    case paradiseFile
+    
+    var buttonName: String{
+      switch self {
+      case .namesFile:
+        return "Nombres"
+      case .aliceFile:
+        return "Alice's adventures in Wonderland"
+      case .paradiseFile:
+        return "Paradise Lost"
+      }
+    }
+    
+    var fileName: String{
+      switch self {
+      case .namesFile:
+        return "Nombres"
+      case .aliceFile:
+        return "Alice"
+      case .paradiseFile:
+        return "Paradise"
+      }
+    }
   }
 }
 
